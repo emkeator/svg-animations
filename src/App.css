@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i');
+
 .App {
   text-align: center;
+  font-family: 'Open Sans', sans-serif
 }
 
 .App-logo {
@@ -15,6 +18,10 @@
 }
 
 .App-title {
+  font-size: 3em;
+}
+
+.App-subtitle {
   font-size: 1.5em;
 }
 
@@ -22,7 +29,41 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.plainSVGDiv {
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  color: #222;
 }
+
+.plainSVGDiv p {
+  width: 30vw;
+  text-align: left;
+  border: 3px solid #222;
+  padding: 20px;
+  margin-right: 50px;
+}
+
+.compassRose {
+  /* border: 1px solid red; */
+  background-color: #222;
+  padding: 50px 0;
+}
+
+.pContainer {
+  width: 100vw;
+  
+}
+
+.pContainer > p {
+  width: 80vw;
+  text-align: center;
+  border: 3px solid #fff;
+  padding: 20px;
+  margin: 0 auto 50px auto;
+  color: #fff
+}
+
