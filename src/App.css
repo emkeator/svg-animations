@@ -1,5 +1,62 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i');
 
+@keyframes flamesMove {
+    0%   {transform: translateX(0mm);} 
+    33%  {transform: translateX(-0.06mm);}
+    66%  {transform: translateX(0.06mm);}
+    100%  {transform: translateX(0mm);}
+}
+
+@keyframes flamesMove2 {
+    0%   {transform: translateX(0mm);} 
+    33%  {transform: translateX(0.06mm);}
+    66%  {transform: translateX(-0.06mm);}
+    100%  {transform: translateX(0mm);}
+}
+
+@keyframes flamesMove3 {
+    0%   {transform: translateX(0mm);} 
+    33%  {transform: translateX(-0.1mm);}
+    66%  {transform: translateX(0.1mm);}
+    100%  {transform: translateX(0mm);}
+}
+
+@keyframes flamesMove4 {
+    0%   {transform: translateX(0mm);} 
+    33%  {transform: translateX(0.04mm);}
+    66%  {transform: translateX(-0.04mm);}
+    100%  {transform: translateX(0mm);}
+}
+
+@keyframes flamesMoveUp {
+    0%   {transform: translateY(-0.5mm);} 
+    50%  {transform: translateY(-0.68mm);}
+    100%  {transform: translateY(-0.5mm);}
+}
+
+@keyframes flamesMoveUp2 {
+    0%   {transform: translateY(-0.5mm);} 
+    50%  {transform: translateY(-0.55mm);}
+    100%  {transform: translateY(-0.5mm);}
+}
+
+@keyframes flamesMoveUp3 {
+    0%   {transform: translateY(-0.5mm);} 
+    50%  {transform: translateY(-0.6mm);}
+    100%  {transform: translateY(-0.5mm);}
+}
+  
+@keyframes flamesMoveUp4 {
+  0%   {transform: translateY(-0.5mm);} 
+  50%  {transform: translateY(-0.64mm);}
+  100%  {transform: translateY(-0.5mm);}
+}
+@keyframes flamesMoveUpAndAcross {
+  0%   {transform: translateX(0mm) translateY(-0mm);} 
+  50%  {transform: translateX(-0.3mm) translateY(-0.3mm);}
+  100%  {transform: translateX(0mm) translateY(-0mm);}
+}
+
 .App {
   text-align: center;
   font-family: 'Open Sans', sans-serif
@@ -47,6 +104,18 @@
   margin-right: 50px;
 }
 
+.plainSVGDiv span{
+  width: 80vw;
+  text-align: center;
+  font-size: 8rem;
+  /* border: 3px solid #222; */
+  padding: 20px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  /* transform: rotate(-15deg); */
+  /* margin-right: 50px; */
+}
+
 .compassRose {
   /* border: 1px solid red; */
   background-color: #222;
@@ -66,4 +135,52 @@
   margin: 0 auto 50px auto;
   color: #fff
 }
+
+.flamesAnimate {
+  animation: flamesMove 2s infinite linear;
+
+}
+
+.flamesAnimate2 {
+  animation: flamesMove2 2s infinite linear;
+
+}
+
+.flamesAnimate3 {
+  animation: flamesMove3 2s infinite linear;
+
+}
+
+.flamesAnimate4 {
+  animation: flamesMove4 2s infinite linear;
+
+}
+
+.flamesAnimate5 {
+  animation: flamesMoveUp 2s infinite linear;
+
+}
+
+.flamesAnimate6 {
+  animation: flamesMoveUp2 2s infinite linear;
+
+}
+
+.flamesAnimate7 {
+  animation: flamesMoveUp3 2s infinite linear;
+
+}
+
+.flamesAnimate8 {
+  animation: flamesMoveUp4 2s infinite linear;
+
+}
+
+.flamesAnimate9 {
+  animation: flamesMoveUpAndAcross 3s infinite linear;
+
+}
+
+
+
 

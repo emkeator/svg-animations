@@ -5,6 +5,10 @@ import Svg2 from './Svg2'
 import SvgThing from './SvgThing'
 import SvgPractice from './SvgPractice'
 import SvgClock from './SvgClock'
+import SvgPath from './SvgPath'
+import SvgSiteEntry from './SvgSiteEntry'
+import SvgStarryNight from './SvgStarryNight'
+import SvgPhoenix from './SvgPhoenix'
 
 class App extends Component {
   render() {
@@ -17,9 +21,13 @@ class App extends Component {
         <section>
           <Svg/>
           <Svg2/>
+          <SvgPhoenix/>          
           <SvgPractice/>
           <SvgThing angularLimit={360} thetaDelta={0.3}/>
           <SvgClock angularLimit={360}/>
+          <SvgPath/>
+          <SvgSiteEntry/>
+          <SvgStarryNight/>  
         </section>
       </div>
     );

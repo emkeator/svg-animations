@@ -36,7 +36,7 @@ export default class SvgThing extends Component {
             return (
                     <div className="compassRose">
                         <div className="pContainer">
-                            <p>This is a more complicated animation - it creates a compass rose that turns and rotates!</p>
+                            <p>This is a more complicated animation - it creates a compass rose-like design that turns and rotates!</p>
                         </div>
                         <svg width="800px" height="800px" viewBox="0 0 800 800" style={{backgroundColor: '#00051e', borderRadius: '50%', border: '5px solid rgb(203,155,81)'}}>
                             <defs>
@@ -102,7 +102,7 @@ export default class SvgThing extends Component {
                             <text x={`${400 - 33}`} y={`${100}`} style={{fill: 'url(#radial1)', fontFamily: 'cursive', fontSize: '3.5rem'}}>N</text>
                             <text x={`${400 - 20}`} y={`${750}`} style={{fill: 'url(#radial1)', fontFamily: 'cursive', fontSize: '3.5rem'}}>S</text>
                             <text x={`${50}`} y={`${400 + 25}`} style={{fill: 'url(#radial1)', fontFamily: 'cursive', fontSize: '3.5rem'}}>E</text>
-                            <text x={`${700}`} y={`${400 + 25}`} style={{fill: 'url(#radial1)', fontFamily: 'cursive', fontSize: '3.5rem'}}>W</text>
+                            <text x={`${700}`} y={`${400 + 25}`} style={{fill: 'url(#radial1)', fontFamily: 'cursive', fontSize: '3.5rem'}}>W</text> 
                         </svg>
                     </div>
             );
