@@ -75,7 +75,7 @@ export default class SvgClock extends Component {
                 <div className="compassRose">
                     <div className="pContainer">
                         <p>This is another more complicated animation - it makes some calculations
-                            to create a working clock!</p>
+                            to create a clock that tracks the minutes/hours/seconds!</p>
                     </div>
 
                     <svg width="800px" height="800px" viewBox="0 0 800 800" >
