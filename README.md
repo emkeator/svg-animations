@@ -6,9 +6,9 @@ SVGs are lightweight files, and animating them can be super fun! While making th
 # Making SVGs
 
 SVGs can be made directly with the SVG HTML tag, and adding various shapes inside, like the circles in the first two animations. While circles and rectangles, and SVG images, even some polygons, can be straightforward, paths get more complicated - especially when you try to make them smooth/curved. A few good resources:
-  --[CSS Tricks guide to SVG syntax](https://css-tricks.com/svg-path-syntax-illustrated-guide/)
-  --[Article on svg paths that curve](http://vanseodesign.com/web-design/svg-paths-curve-commands/)
-  --MDN documentation
+  *[CSS Tricks guide to SVG syntax](https://css-tricks.com/svg-path-syntax-illustrated-guide/)
+  *[Article on svg paths that curve](http://vanseodesign.com/web-design/svg-paths-curve-commands/)
+  *MDN documentation
 
 If you don't want to code your SVGs, that's totally understandle. JS can help you code the points....but it takes some math to get there. Another great option is to use an application that allows you to draw and export svg files like Adobe Illustrator or the free iOS-friendly Inkscape.
 
@@ -74,13 +74,13 @@ export default class Svg extends Component {
 ```
 
 That's a basic animation with SVG! This repo contains a few more examples, including:
-  --Smoothly changing the color of a circle between red and blue, going through purple.
-  --Animating with keyframes in CSS to make flames move.
-  --Using requestAnimationFrame and a gradient to animate an SVG that could serve as a button.
-  --A fun example of a rotating compass (that would definitely get you lost)
-  --Another fun example of a clock that actually tracks the seconds/minutes/hours, using requestAnimationFrame (note: it starts at midnight and runs while the page is open to the user. Functionality to relate to actual hour/minute/second pending)
-  --An example of "writing" words with SVG animations.
-  --Another example of writing words with SVG animations, that also changes color.
-  --My favorite example - an SVG animation that brings to life Van Gogh's "Starry Night"!
+  *Smoothly changing the color of a circle between red and blue, going through purple.
+  *Animating with keyframes in CSS to make flames move.
+  *Using requestAnimationFrame and a gradient to animate an SVG that could serve as a button.
+  *A fun example of a rotating compass (that would definitely get you lost)
+  *Another fun example of a clock that actually tracks the seconds/minutes/hours, using requestAnimationFrame (note: it starts at midnight and runs while the page is open to the user. Functionality to relate to actual hour/minute/second pending)
+  *An example of "writing" words with SVG animations.
+  *Another example of writing words with SVG animations, that also changes color.
+  *My favorite example - an SVG animation that brings to life Van Gogh's "Starry Night"!
   
   
