@@ -11,7 +11,7 @@ export default class Svg extends Component {
 
     //In componentDidMount, create a callback for the requestAnimationFrame
     componentDidMount() {
-        //must create in componentDidMount!
+
         const animate = (timestamp) => {
             //assign the color change
             const color = this.state.color === 'red' ? 'blue' : 'red';
@@ -41,6 +41,7 @@ export default class Svg extends Component {
                     circular SVG, and changes the color/stroke based on state. 
                     It has a condition for time so that the changes occur
                     every second, not every animation frame.
+                    For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/Svg.js</a>.
                 </p>
                 
                 <svg height="100" width="100" ref="mySVG">

@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import clockOuter from './zodiac_clock_outer.png'
-import clockInner from './zodiac_clock_inner.png'
 import lodash from 'lodash'
 import snowflakes from './snowflakes.jpg'
 
+//See render function, first SVG, for explanation of the intermediate shapes
 export default class SvgSnowflake extends Component {
         constructor(props) {
             super(props);
@@ -47,12 +46,26 @@ export default class SvgSnowflake extends Component {
         }
 
         componentDidMount() {
-            //In componentDidMount, create a callback for the requestAnimationFrame
+
+            // Each of the snowflakes you see is made of up of 
+            // two snowflakes, overlaid over each other with 
+            // positioning. I used repl.it to create a function
+            // that took the path strings (d attribute) and 
+            // calculated 0.01 of the difference between the circle
+            // and the first flake, then the first flake and the full
+            // flake. I then took those values and made them the delta
+            // arrays in state. To animate the growth, I started each svg
+            // with the circle path, and for 100 iterations of 
+            // requestAnimationFrame I add the delta change for each
+            // path node to become the flake, and then for the next 100
+            // I did the same but with the delta change from flake to full
+            // flake.
+
             const animate = () => {
                 
                 let {deltaCircleToFlake, deltaFlakeToFullFlake, currentPath, count} = this.state
                 if(count < 100) {
-                    //move it up
+                    //delta change towards the first flake
                     currentPath = currentPath.map((e, i) => {
                         return e + deltaCircleToFlake[i]
                     })
@@ -63,7 +76,7 @@ export default class SvgSnowflake extends Component {
                     //recursive call
                     this.rafId = requestAnimationFrame(animate);
                 } else if (count >= 100 && count < 200){
-                    //move it up
+                    //delta change towards the full flake
                     currentPath = currentPath.map((e, i) => {
                         return e + deltaFlakeToFullFlake[i]
                     })
@@ -113,7 +126,9 @@ export default class SvgSnowflake extends Component {
                             intermediate shapes could have been added as well, so long as the 
                             number of nodes stayed consistent. Note: the way this is set up to 
                             change the path, which is stored as an array in state, can get expensive!
-                            A few of the snowflakes rotate, using a set interval, upon clicking.</p>
+                            A few of the snowflakes rotate, using a set interval, upon clicking.
+                            For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/SvgSnowflake.js</a>.
+                        </p>
                     </div>
                     <div style={{position: 'relative', width: '80vw', height: '500px', border:'3px solid white', margin: '0 auto', backgroundImage:`url(${snowflakes})`}}>
                         
@@ -124,7 +139,12 @@ export default class SvgSnowflake extends Component {
                                     d={`m ${lodash.chunk(this.state.currentPath, 2).join(' ')} z`}
                                     id="fullFlake"
                                 />
-                                {/* <path 
+                                {/* 
+
+                                ////
+                                For reference: these are the intermediate shapes.
+                                
+                                <path 
                                     style={{fill: 'none', stroke: 'white', strokeWidth: '0.26458332px', strokeLinecap: 'butt', strokeLinejoin: 'miter', strokeOpacity: 1}}
                                     d="m 68.097176,146.77033 0.01863,-22.28789 -6.987859,-10.42979 6.885888,4.2097 4.409524,-12.7348 4.308806,12.88776 7.411728,-3.83682 -7.258775,10.15888 -0.135591,22.03296 17.528501,-12.57462 5.948922,-11.86911 -0.892728,8.86828 12.372568,-4.81944 -8.10738,11.04253 7.84134,2.86988 -11.861849,0.89422 -17.816055,12.64017 16.637664,11.54965 13.20195,0.36838 -8.35843,3.35348 8.46276,11.45426 -12.74545,-3.85759 0.07847,7.77437 -5.176914,-11.54721 -17.113373,-12.04343 0.08461,22.49522 7.250027,10.38755 -7.40298,-4.01451 -4.257816,13.38396 -4.307534,-13.84282 -7.488952,4.32917 7.335999,-10.44729 0.13434,-22.29128 -17.163113,12.34933 -5.804713,11.76865 -0.107971,-8.4969 -12.314085,2.89914 8.029899,-9.73979 -7.635905,-3.05631 12.632371,-0.61456 17.350197,-12.16147 -16.891338,-11.95413 -12.584388,-0.63956 7.434969,-3.17553 -8.047394,-11.24497 13.07735,4.67524 -0.02749,-8.57262 4.93948,11.61569 z"
                                     id="fullFlake"

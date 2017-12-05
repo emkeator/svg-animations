@@ -1,14 +1,10 @@
 import React, {Component} from 'react'
-import clockOuter from './zodiac_clock_outer.png'
-import clockInner from './zodiac_clock_inner.png'
 
 export default class SvgClock extends Component {
         constructor(props) {
             super(props);
 
             this.state = {
-                //Theta is the angle to rotate
-                //Theta Delta is calculated to be the degrees the clock should rotate per second.
                 currentSecTheta: 0,
                 currentHrTheta: 0,                
                 currentMinTheta: 0,
@@ -24,18 +20,22 @@ export default class SvgClock extends Component {
 
         componentDidMount() {
 
+            //Set it to the current time!
             let time = new Date()
+            //If you want your own timezone:
+            //Change to .getHours, .getMinutes, .getSeconds
             let hour = time.getUTCHours()
             hour = hour >= 12 ? hour - 12 : hour
-            let minute = time.getUTCMinutes()
+            let minute = time.getUTCMinutes() 
             let second = time.getUTCSeconds()
-            console.log(hour, minute, second)
+
             this.setState({
                 currentHrTheta: hour * 30,
                 currentMinTheta: minute * 6,
                 currentSecTheta: second * this.state.thetaDeltaSec
             })
 
+            //Make the clock tick
             setInterval(() => {
                 const nextSecTheta = this.state.currentSecTheta >= this.props.angularLimit ? 6 : this.state.currentSecTheta + this.state.thetaDeltaSec;
                 const nextMinTheta = this.state.currentMinTheta >= this.props.angularLimit ? 0.1 : this.state.currentMinTheta + this.state.thetaDeltaMin;
@@ -47,49 +47,6 @@ export default class SvgClock extends Component {
                 this.setState({ currentHrTheta: nextHrTheta });
             }, 1000 * 60 * 60)
 
-
-            //In componentDidMount, create a callback for the requestAnimationFrame
-            // const animate = (timestamp) => {
-            //     //360 degrees
-            //     //24 hours = 360 degrees
-            //     //12 hours = 180 degrees
-            //     //1 hour = 180 / 12
-            //     //1 minute = (180 / 12) / 60
-            //     //1 second = ((180 / 12) / 60) / 60
-
-            //     //only go if 1 second has passed!
-            //     // console.log(this.state.currentMinTheta)
-            //     if(timestamp - this.state.lastSec >= 1000){
-            //         const nextSecTheta = this.state.currentSecTheta >= this.props.angularLimit ? 6 : this.state.currentSecTheta + this.state.thetaDeltaSec;
-            //         // console.log(nextSecTheta)
-            //         const nextMinTheta = this.state.currentMinTheta >= this.props.angularLimit ? 0.1 : this.state.currentMinTheta + this.state.thetaDeltaMin;
-                    
-            //         this.setState({ currentSecTheta: nextSecTheta, 
-            //                         lastSec: timestamp,
-            //                         currentMinTheta: nextMinTheta,
-            //                         lastMin: timestamp });
-            //     }
-
-            //     // if(timestamp - this.state.lastMin >= 1000 * 60){
-            //     //     const nextMinTheta = this.state.currentMinTheta > this.props.angularLimit ? 0 : this.state.currentMinTheta + this.state.thetaDeltaMin;
-            //     //     console.log(nextMinTheta)
-            //     //     this.setState({ currentMinTheta: nextMinTheta,
-            //     //                     lastMin: timestamp });
-            //     // }
-
-            //     if(timestamp - this.state.lastHr >= 1000 * 60 * 60){
-            //         const nextHrTheta = this.state.currentHrTheta > this.props.angularLimit ? 0 : this.state.currentHrTheta + this.state.thetaDeltaHr;
-            //         this.setState({ currentHrTheta: nextHrTheta,
-            //                         lastHr: timestamp });
-            //     }
-
-
-                
-            //     //recursive call
-            //     this.rafId = requestAnimationFrame(animate);
-            // };
-
-            // this.rafId = requestAnimationFrame(animate);
         }
 
         render() {
@@ -104,8 +61,9 @@ export default class SvgClock extends Component {
                             being viewed! setInterval keeps the clock running and accurate. Note: because I 
                             am mildly obsessed with British history, I set this clock up to run on 
                             Greenwich Mean time; unless you find yourself in London,
-                            this clock won't give you accurate time!</p>
-                        <p style={{fontFamily: 'cursive', fontSize: '2rem', border: 'none', background: '-webkit-linear-gradient(right, rgb(70,37,35), rgb(203,155,81), rgb(246,226,122), rgb(246,242,193), rgb(246,226,122), rgb(203,155,81), rgb(70,37,35)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>Greenwich Meantime Clock</p>
+                            this clock won't give you accurate time!
+                            For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/SvgClock.js</a>.</p>
+                        <p style={{fontFamily: 'cursive', fontSize: '2rem', border: 'none', background: '-webkit-linear-gradient(right, rgb(70,37,35), rgb(203,155,81), rgb(246,226,122), rgb(246,242,193), rgb(246,226,122), rgb(203,155,81), rgb(70,37,35)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>Greenwich Mean Time Clock</p>
                     </div>
 
                     <svg width="800px" height="800px" viewBox="0 0 800 800" >

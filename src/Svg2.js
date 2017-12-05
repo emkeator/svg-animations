@@ -13,7 +13,7 @@ export default class Svg extends Component {
 
     //In componentDidMount, create a callback for the requestAnimationFrame
     componentDidMount() {
-        //must create in componentDidMount!
+
         const animate = (timestamp) => {
             //assign the color change
             if(timestamp - this.state.last >= 200){
@@ -69,6 +69,8 @@ export default class Svg extends Component {
                     change from red to blue.
                     It has a condition for time so that the changes occur
                     very smoothly.
+                    For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/Svg2.js</a>.
+
                 </p>
                 
                 <svg height="100" width="100" ref="mySVG">

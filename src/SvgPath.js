@@ -5,17 +5,14 @@ export default class SvgPath extends Component {
     constructor() {
         super();
         this.state = {
-            // pathPoints: [[100,50], [95,45], [40,45], [10,70], [45,130], [70, 110], [45, 130], [30, 170], [38, 190], [70, 185], [100, 165], [115,140]
             pathPoints: [100,50, 95,45, 40,45, 10,70, 20,100, 45,130, 70, 110, 45, 130, 30, 170, 38, 190, 70, 185, 100, 165, 115,140],
             webPathOffset: 205,
             devPathOffset: 440
-            // pathPointsBezier: [100,50, 105,46, 90,40, 95,45, 85,38, 20,52, 40,45]//, 10,70, 20,100, 45,130, 70, 110, 45, 130, 30, 170, 38, 190, 70, 185, 100, 165, 115,140],
         }
     }
 
-    //In componentDidMount, create a callback for the requestAnimationFrame
     componentDidMount() {
-        //must create in componentDidMount!
+
         const animateDev = (timestamp) => {
             if (this.state.devPathOffset <= 0){
                 this.setState({
@@ -74,11 +71,9 @@ export default class SvgPath extends Component {
     createBezierPath(array){
         let pathStr = `M ${array[0]} ${array[1]}`
         array = lodash.chunk(array.slice(2), 6)
-        console.log(array)
         array.map((e, i) => {
             pathStr += ` C ${e.join(' ')}`
         })
-        console.log(pathStr)
         return pathStr
     }
 
@@ -88,7 +83,8 @@ export default class SvgPath extends Component {
                 <p style={{width: '80vw'}}>
                     This animation makes it appear to hand-write 'web developer' on the screen.
                     It does so by making a path, setting the dasharray and dashoffset so that nothing
-                    is visible, and then changing the dashoffset until the word is "written".
+                    is visible, and then changing the dashoffset until the word is "written". 
+                    For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/SvgPath.js</a>.
                 </p>
                 
 

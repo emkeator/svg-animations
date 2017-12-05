@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import starry from './starryNight.jpg'
 
-
-/* EXAMPLE ADAPTED FROM https://www.aaron-powell.com/demos/react-svg/react-svg-example/ */
 export default class SvgThing extends Component {
         constructor(props) {
             super(props);
@@ -22,7 +20,6 @@ export default class SvgThing extends Component {
                     speed1Offset += 2
                     speed2Offset += 10
                     timelast = timestamp
-                    // console.log(speed1Offset)
                     this.setState({
                         speed1Offset, speed2Offset, timelast
                     })
@@ -38,9 +35,6 @@ export default class SvgThing extends Component {
             cancelAnimationFrame(this.rafId);
         }
 
-        // #748BB0 light blue
-        //darker blue #283D81
-
         render() {
             let darkBlue = "#283D81"
             let lightBlue = "#748BB0"
@@ -55,7 +49,9 @@ export default class SvgThing extends Component {
                             <p>This animation is easier than it looks! It loads Van Gogh's 
                                 "Starry Night" in an SVG Image tag (different from your typical 
                                 html img tag). Spiral and circle paths are made to move by changing
-                                their dasharray offset, bringing the night to life. </p>
+                                their dasharray offset, bringing the night to life. 
+                                For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/SvgStarryNight.js</a>.
+                            </p>
                         </div>
                         <svg
                             width="209.83739mm"

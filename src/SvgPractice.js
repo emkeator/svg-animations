@@ -19,51 +19,6 @@ export default class SvgPractice extends Component {
         }
     }
 
-    //In componentDidMount, create a callback for the requestAnimationFrame
-
-    componentDidMount() {
-        //TO SHOW:
-        //Uncomment below; comment out the rect linear and comment in rect radial
-        //Comment out the mouseOver mouseLeave functions
-
-
-        // const animateRadial = (timestamp) => {
-        //     if (timestamp - this.state.last >= 0){
-        //         let {fx, fy, speed} = this.state
-        //         if (fx <= 0 && fy < 100){
-        //             // fx = fx //stay at 0%
-        //             fy = fy + speed
-        //         } else if (fy >= 100 && fx < 100 ) {
-        //             fx = fx + speed
-        //             //fy = fy //stay at 100%
-        //         } else if (fx >= 100 && fy > 0) {
-        //             //fx = fx //stay at 100%
-        //             fy = fy - speed
-        //         } else if (fy <= 0 && fx > 0) {
-        //             fx = fx - speed
-        //             //fy = fy //stay at 0%
-        //         }
-        //         console.log(fx, fy)
-        //         let last = timestamp
-        //         this.setState({
-        //             fx, fy, last
-        //         })
-        //     }
-        //     this.rafId = requestAnimationFrame(animateRadial);
-            
-        // };
-
-        // this.rafId = requestAnimationFrame(animateRadial);
- 
-    }
-
-    
-    componentWillUnmount() {
-        // cancelAnimationFrame(this.rafId);
-        // cancelAnimationFrame(this.rafId2);
-        cancelAnimationFrame(this.rafIdText);
-    }
-
     animateMouseOver(){
         cancelAnimationFrame(this.rafIdLeave);        
         const animate = (timestamp) => {
@@ -128,6 +83,7 @@ export default class SvgPractice extends Component {
                     This is a nice SVG login button, which works with onMouseOver 
                     and onMouseLeave JSX event listeners to add a border when
                     the user hovers over the button.
+                    For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/SvgPractice.js</a>.
 
                 </p>
                 <svg height="100" width="200" onMouseOver={() => this.animateMouseOver()} onMouseLeave={() => this.animateMouseLeave()}>

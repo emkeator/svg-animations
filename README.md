@@ -27,8 +27,24 @@ Fair warning: the second option comes with its own set of issues. These files of
 
 [Non-App Drawing of Bezier-curve smoothed lines](https://medium.com/@francoisromain/smooth-a-svg-path-with-cubic-bezier-curves-e37b49d46c74)
 
+[Transforming SVGs - read before trying to rotate!](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform)
 
-# Setting Up an Animation
+# This Repo
+This repo contains a few more examples, including:
+  * Smoothly changing the color of a circle between red and blue, going through purple.
+  * Animating with keyframes in CSS to make flames move.
+  * Using requestAnimationFrame and a gradient to animate an SVG that could serve as a button.
+  * A fun example of a rotating compass (that would definitely get you lost)
+  * Another fun example of a clock that actually tracks the seconds/minutes/hours
+  from Greenwich Mean Time (London Time).
+  * An example of "writing" words with SVG animations.
+  * Another example of writing words with SVG animations, that also changes color.
+  * An animation that actually changes the path's nodes in order to transform a circle into a snowflake.
+  * My favorite example - an SVG animation that brings to life Van Gogh's "Starry Night"!
+
+Please note: some of these are more complex and time consuming than others! They can also be more expensive programmatically.
+
+# Setting Up a Simple Animation
 
 The easiest formula I have found to animate an SVG is to choose somethign about it that will change, and track that as a variable in state.
 
@@ -83,20 +99,24 @@ export default class Svg extends Component {
 } 
 ```
 
-That's a basic animation with SVG! This repo contains a few more examples, including:
-  * Smoothly changing the color of a circle between red and blue, going through purple.
-  * Animating with keyframes in CSS to make flames move.
-  * Using requestAnimationFrame and a gradient to animate an SVG that could serve as a button.
-  * A fun example of a rotating compass (that would definitely get you lost)
-  * Another fun example of a clock that actually tracks the seconds/minutes/hours
-  from Greenwich Meantime (London Time).
-  * An example of "writing" words with SVG animations.
-  * Another example of writing words with SVG animations, that also changes color.
-  * An animation that actually changes the path's nodes in order to transform a circle into a snowflake.
-  * My favorite example - an SVG animation that brings to life Van Gogh's "Starry Night"!
+# Rotation
+Rotating an svg can be complicated, depending on what you are trying to rotate. SVGs
+base rotating around the top left point of their canvas, which is (0,0) to them. If you have everything centered and you want to rotate it, it might be better to give
+the whole svg a transform attribute and rotate that by tracking/changing in state. 
+(This is how the snowflakes in the live example are rotated on hover.) Otherwise,
+you will have to account for this by creating SVG groups that are translated to what you may think of as the center of the SVG canvas, and positioning everything accordingly around that point before rotating (see the compass and clock for examples of this).
+
+# Gradient Color Change
+Similar to the color change example above - except you use a template string of rgb to give the stroke or fill color, and change the corresponding r, g, and b in state.
+
+# Transforming paths
+Complex and requiring extra code and effort, see the snowflake example for more details!
+
+# Writing words
+Uses dasharray and dasharray offset properties. Se above for a great article on how to do it, and take a look at the examples in the live demo.
 
 
-Please note: some of these are more complex and time consuming than others! For instance, transforming a shape required creating the intermediate shapes, and making sure that all had the same number of nodes (you could probably code a case for which nodes are added, as well). But with the help of apps, you can 
+
   
   
   

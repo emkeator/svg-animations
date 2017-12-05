@@ -10,32 +10,33 @@ export default class SvgPath extends Component {
             siteSPathOffset: 100,
             sitePathOffset: 130,
             siteTPathOffset: 26,
-            iDot: 34, //down to 40
+            iDot: 34,
             last: 0,
             lastTime: 0,
-            siteColor: 34, //down to at rgb(0, 0, 0)
-            fontColor: 100 //up to 255, 255, 255
+            siteColor: 34,
+            fontColor: 100
         }
     }
 
-    //In componentDidMount, create a callback for the requestAnimationFrame
     componentDidMount() {
-        //must create in componentDidMount!
+
         const animateFont = (timestamp) => {
-            // console.log('running')
+
             let {fontColor, siteColor, lastTime} = this.state
+
             if (timestamp - this.state.lastTime >= 200){
                 lastTime = timestamp
                 fontColor = fontColor === 255 ? 255 : fontColor + 5
                 siteColor = siteColor <= 0 ? 0 : siteColor - 4
-                // iDot = iDot >= 40 ? 40 : iDot - 2
                 this.setState({
                     fontColor, siteColor, lastTime
                 })
             }
+
             if (fontColor === 0 && siteColor === 255){
                 cancelAnimationFrame(this.rafIdFont)
             }
+
             this.rafIdFont = requestAnimationFrame(animateFont);
             
         }
@@ -135,6 +136,7 @@ export default class SvgPath extends Component {
                     dasharray, and a dasharray offset that is changed in state to "draw" the words.
                     The color is also being animated to smoothly change via state. After the animation
                     is complete, the svg becomes clickable!
+                    For this code, look for the file <a target="_blank" href="https://github.com/emkeator/svg-animations">/src/SvgSiteEntry.js</a>.
                 </p>
                 
                 <div style={{width: '80vw', margin: '0px auto 50px auto', padding: '20px 0px', backgroundColor: `rgb(${this.state.siteColor}, ${this.state.siteColor}, ${this.state.siteColor})`, border: '1px solid white' }}>
@@ -187,6 +189,7 @@ export default class SvgPath extends Component {
                                 strokeDasharray="25"
                                 strokeDashoffset={`${this.state.siteTPathOffset}`}
                             /> 
+                            {/*Site's dot on the i*/}
                             <circle r="0.7" fill={`rgb(${this.state.iDot}, ${this.state.iDot}, ${this.state.iDot})`} cx="105" cy="149.5"/>
                         </g>
                         </svg>

@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import clockOuter from './zodiac_clock_outer.png'
-import clockInner from './zodiac_clock_inner.png'
 import lodash from 'lodash'
 
 export default class SvgSwan extends Component {
