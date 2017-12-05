@@ -9,8 +9,12 @@ import SvgPath from './SvgPath'
 import SvgSiteEntry from './SvgSiteEntry'
 import SvgStarryNight from './SvgStarryNight'
 import SvgPhoenix from './SvgPhoenix'
+import SvgSwan from './SvgSwan'
+import SvgSnowflake from './SvgSnowflake'
 
 class App extends Component {
+
+  componentWillUpdate
   render() {
     return (
       <div className="App">
@@ -28,6 +32,8 @@ class App extends Component {
           <SvgPath/>
           <SvgSiteEntry/>
           <SvgStarryNight/>  
+          <SvgSnowflake/>
+          {/* <SvgSwan/> */}
         </section>
       </div>
     );
