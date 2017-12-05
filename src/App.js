@@ -31,9 +31,8 @@ class App extends Component {
           <SvgClock angularLimit={360}/>
           <SvgPath/>
           <SvgSiteEntry/>
+          <SvgSnowflake/>          
           <SvgStarryNight/>  
-          <SvgSnowflake/>
-          {/* <SvgSwan/> */}
         </section>
       </div>
     );

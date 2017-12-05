@@ -49,7 +49,7 @@ export default class Svg extends Component {
                 <div className="pContainer">
                     <p>
                         This animation is a set of SVG paths that are animated to move by using keyframes, in CSS.
-                        The color changes are achieved by using state.
+                        The color changes are achieved by adjusting the gradient offsets, and changing them in state.
                     </p>
                 </div>
                 

@@ -134,7 +134,7 @@ export default class SvgPath extends Component {
                     This animation has words drawn out as paths (no fill); each has a 
                     dasharray, and a dasharray offset that is changed in state to "draw" the words.
                     The color is also being animated to smoothly change via state. After the animation
-                    is complete, the svg become clickable!
+                    is complete, the svg becomes clickable!
                 </p>
                 
                 <div style={{width: '80vw', margin: '0px auto 50px auto', padding: '20px 0px', backgroundColor: `rgb(${this.state.siteColor}, ${this.state.siteColor}, ${this.state.siteColor})`, border: '1px solid white' }}>

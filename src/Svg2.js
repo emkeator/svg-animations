@@ -68,7 +68,7 @@ export default class Svg extends Component {
                     circular SVG, and changes the color/stroke based on state to smoothly 
                     change from red to blue.
                     It has a condition for time so that the changes occur
-                    every second, not every animation frame.
+                    very smoothly.
                 </p>
                 
                 <svg height="100" width="100" ref="mySVG">

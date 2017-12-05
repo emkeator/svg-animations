@@ -17,9 +17,16 @@ If you don't want to code your SVGs, that's totally understandle. JS can help yo
 
 Fair warning: the second option comes with its own set of issues. These files often contain a ton of metadata & links to strip out, and you'll have to convert the HTML that is exported into JSX! Attribute names/style attributes are slightly different for SVGs rendered in React.
 
-[Potentially helpful VS Code extension](https://marketplace.visualstudio.com/items?itemName=jock.svg)
+[Potentially helpful VS Code extension to strip out metadata from app-created SVGs](https://marketplace.visualstudio.com/items?itemName=jock.svg)
 
 [Useful site to transform your svg elements from HTML to JSX](https://magic.reactjs.net/htmltojsx.htm)
+
+[Good article on making an SVG "write" onto the screen](https://jakearchibald.com/2013/animated-line-drawing-svg/)
+
+[Another good one on SVG Path animation](https://css-tricks.com/svg-line-animation-works/)
+
+[Non-App Drawing of Bezier-curve smoothed lines](https://medium.com/@francoisromain/smooth-a-svg-path-with-cubic-bezier-curves-e37b49d46c74)
+
 
 # Setting Up an Animation
 
@@ -81,9 +88,15 @@ That's a basic animation with SVG! This repo contains a few more examples, inclu
   * Animating with keyframes in CSS to make flames move.
   * Using requestAnimationFrame and a gradient to animate an SVG that could serve as a button.
   * A fun example of a rotating compass (that would definitely get you lost)
-  * Another fun example of a clock that actually tracks the seconds/minutes/hours, using requestAnimationFrame (note: it starts at midnight and runs while the page is open to the user. Functionality to relate to actual hour/minute/second pending)
+  * Another fun example of a clock that actually tracks the seconds/minutes/hours
+  from Greenwich Meantime (London Time).
   * An example of "writing" words with SVG animations.
   * Another example of writing words with SVG animations, that also changes color.
+  * An animation that actually changes the path's nodes in order to transform a circle into a snowflake.
   * My favorite example - an SVG animation that brings to life Van Gogh's "Starry Night"!
+
+
+Please note: some of these are more complex and time consuming than others! For instance, transforming a shape required creating the intermediate shapes, and making sure that all had the same number of nodes (you could probably code a case for which nodes are added, as well). But with the help of apps, you can 
+  
   
   

@@ -54,9 +54,8 @@ export default class SvgThing extends Component {
                         <div className="pContainer">
                             <p>This animation is easier than it looks! It loads Van Gogh's 
                                 "Starry Night" in an SVG Image tag (different from your typical 
-                                html img tag). Paths that make spirals and circles, with dasharray
-                                attributes, are made to move by changing the dasharray offset
-                                in state. </p>
+                                html img tag). Spiral and circle paths are made to move by changing
+                                their dasharray offset, bringing the night to life. </p>
                         </div>
                         <svg
                             width="209.83739mm"

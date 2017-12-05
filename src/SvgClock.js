@@ -23,51 +23,73 @@ export default class SvgClock extends Component {
         }
 
         componentDidMount() {
+
+            let time = new Date()
+            let hour = time.getUTCHours()
+            hour = hour >= 12 ? hour - 12 : hour
+            let minute = time.getUTCMinutes()
+            let second = time.getUTCSeconds()
+            console.log(hour, minute, second)
+            this.setState({
+                currentHrTheta: hour * 30,
+                currentMinTheta: minute * 6,
+                currentSecTheta: second * this.state.thetaDeltaSec
+            })
+
+            setInterval(() => {
+                const nextSecTheta = this.state.currentSecTheta >= this.props.angularLimit ? 6 : this.state.currentSecTheta + this.state.thetaDeltaSec;
+                const nextMinTheta = this.state.currentMinTheta >= this.props.angularLimit ? 0.1 : this.state.currentMinTheta + this.state.thetaDeltaMin;
+                this.setState({ currentSecTheta: nextSecTheta, currentMinTheta: nextMinTheta });
+            }, 1000)
+
+            setInterval(() => {
+                const nextHrTheta = this.state.currentHrTheta > this.props.angularLimit ? 0 : this.state.currentHrTheta + this.state.thetaDeltaHr;
+                this.setState({ currentHrTheta: nextHrTheta });
+            }, 1000 * 60 * 60)
+
+
             //In componentDidMount, create a callback for the requestAnimationFrame
-            const animate = (timestamp) => {
-                //360 degrees
-                //24 hours = 360 degrees
-                //12 hours = 180 degrees
-                //1 hour = 180 / 12
-                //1 minute = (180 / 12) / 60
-                //1 second = ((180 / 12) / 60) / 60
+            // const animate = (timestamp) => {
+            //     //360 degrees
+            //     //24 hours = 360 degrees
+            //     //12 hours = 180 degrees
+            //     //1 hour = 180 / 12
+            //     //1 minute = (180 / 12) / 60
+            //     //1 second = ((180 / 12) / 60) / 60
 
-                //only go if 1 second has passed!
-                // console.log(this.state.currentMinTheta)
-                if(timestamp - this.state.lastSec >= 1000){
-                    const nextSecTheta = this.state.currentSecTheta >= this.props.angularLimit ? 6 : this.state.currentSecTheta + this.state.thetaDeltaSec;
-                    // console.log(nextSecTheta)
-                    const nextMinTheta = this.state.currentMinTheta >= this.props.angularLimit ? 0.1 : this.state.currentMinTheta + this.state.thetaDeltaMin;
+            //     //only go if 1 second has passed!
+            //     // console.log(this.state.currentMinTheta)
+            //     if(timestamp - this.state.lastSec >= 1000){
+            //         const nextSecTheta = this.state.currentSecTheta >= this.props.angularLimit ? 6 : this.state.currentSecTheta + this.state.thetaDeltaSec;
+            //         // console.log(nextSecTheta)
+            //         const nextMinTheta = this.state.currentMinTheta >= this.props.angularLimit ? 0.1 : this.state.currentMinTheta + this.state.thetaDeltaMin;
                     
-                    this.setState({ currentSecTheta: nextSecTheta, 
-                                    lastSec: timestamp,
-                                    currentMinTheta: nextMinTheta,
-                                    lastMin: timestamp });
-                }
+            //         this.setState({ currentSecTheta: nextSecTheta, 
+            //                         lastSec: timestamp,
+            //                         currentMinTheta: nextMinTheta,
+            //                         lastMin: timestamp });
+            //     }
 
-                if(timestamp - this.state.lastMin >= 1000 * 60){
-                    const nextMinTheta = this.state.currentMinTheta > this.props.angularLimit ? 0 : this.state.currentMinTheta + this.state.thetaDeltaMin;
-                    this.setState({ currentMinTheta: nextMinTheta,
-                                    lastMin: timestamp });
-                }
+            //     // if(timestamp - this.state.lastMin >= 1000 * 60){
+            //     //     const nextMinTheta = this.state.currentMinTheta > this.props.angularLimit ? 0 : this.state.currentMinTheta + this.state.thetaDeltaMin;
+            //     //     console.log(nextMinTheta)
+            //     //     this.setState({ currentMinTheta: nextMinTheta,
+            //     //                     lastMin: timestamp });
+            //     // }
 
-                // if(timestamp - this.state.lastHr >= 1000 * 60 * 60){
-                //     const nextHrTheta = this.state.currentHrTheta > this.props.angularLimit ? 0 : this.state.currentHrTheta + this.state.thetaDeltaHr;
-                //     this.setState({ currentHrTheta: nextHrTheta,
-                //                     lastHr: timestamp });
-                // }
+            //     if(timestamp - this.state.lastHr >= 1000 * 60 * 60){
+            //         const nextHrTheta = this.state.currentHrTheta > this.props.angularLimit ? 0 : this.state.currentHrTheta + this.state.thetaDeltaHr;
+            //         this.setState({ currentHrTheta: nextHrTheta,
+            //                         lastHr: timestamp });
+            //     }
 
 
                 
-                //recursive call
-                this.rafId = requestAnimationFrame(animate);
-            };
+            //     //recursive call
+            //     this.rafId = requestAnimationFrame(animate);
+            // };
 
-            this.rafId = requestAnimationFrame(animate);
-        }
-
-        componentWillUnmount() {
-            cancelAnimationFrame(this.rafId);
+            // this.rafId = requestAnimationFrame(animate);
         }
 
         render() {
@@ -75,7 +97,15 @@ export default class SvgClock extends Component {
                 <div className="compassRose">
                     <div className="pContainer">
                         <p>This is another more complicated animation - it makes some calculations
-                            to create a clock that tracks the minutes/hours/seconds!</p>
+                            to create a clock that tracks the minutes/hours/seconds! This one works on 
+                            setInterval, rather than requestAnimationFrame, because while setInterval
+                            will run at the given interval (1 sec in this case) as long as the component 
+                            is mounted, requestAnimationFrame will stop animating while the page is not 
+                            being viewed! setInterval keeps the clock running and accurate. Note: because I 
+                            am mildly obsessed with British history, I set this clock up to run on 
+                            Greenwich Mean time; unless you find yourself in London,
+                            this clock won't give you accurate time!</p>
+                        <p style={{fontFamily: 'cursive', fontSize: '2rem', border: 'none', background: '-webkit-linear-gradient(right, rgb(70,37,35), rgb(203,155,81), rgb(246,226,122), rgb(246,242,193), rgb(246,226,122), rgb(203,155,81), rgb(70,37,35)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>Greenwich Meantime Clock</p>
                     </div>
 
                     <svg width="800px" height="800px" viewBox="0 0 800 800" >
