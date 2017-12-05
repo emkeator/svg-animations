@@ -68,11 +68,10 @@ export default class SvgSnowflake extends Component {
             return (
                 <div className="compassRose">
                     <div className="pContainer">
-                        <p>This is another more complicated animation - it makes some calculations
-                            to create a clock that tracks the minutes/hours/seconds!</p>
+                        <p>This is another more complicated animation - the path is changed 
+                            using math to make to snowflake grow out of the circle.</p>
                     </div>
                     <div style={{position: 'relative', width: '80vw', border:'3px solid white', margin: '0 auto', backgroundImage:`url(${snowflakes})`}}>
-                        {/* <img src={snowflakes} style={{width: '80vw', height:'375px', position: 'absolute', top: 0, left: 0}}/> */}
                         <svg width="79.727089mm" height="98.450249mm" viewBox="0 0 79.727089 98.450249" id="svg8" style={{zIndex:5}}>
                             <g id="layer1" transform="translate(-32.355543,-105.1169)">
                                 <path 
