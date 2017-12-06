@@ -130,7 +130,7 @@ export default class SvgPath extends Component {
 
     render(){
         return (
-            <div className="plainSVGDiv" style={{backgroundColor: '#222', marginBottom: '0'}}>
+            <div className="plainSVGDiv siteEntry" style={{backgroundColor: '#222', marginBottom: '0'}}>
                 <p style={{width: '80vw', margin: '50px auto', color: 'white', border: '3px solid white'}}>
                     This animation has words drawn out as paths (no fill); each has a 
                     dasharray, and a dasharray offset that is changed in state to "draw" the words.
