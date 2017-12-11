@@ -11,7 +11,7 @@ SVGs are lightweight files, and animating them can be super fun! While making th
 SVGs can be made directly with the SVG HTML tag, and adding various shapes inside, like the circles in the first two animations. While circles and rectangles, and SVG images, even some polygons, can be straightforward, paths get more complicated - especially when you try to make them smooth/curved. A few good resources:
   * [CSS Tricks guide to SVG syntax](https://css-tricks.com/svg-path-syntax-illustrated-guide/)
   * [Article on svg paths that curve](http://vanseodesign.com/web-design/svg-paths-curve-commands/)
-  * MDN documentation
+  * [MDN documentation on SVGs](https://developer.mozilla.org/en-US/docs/Web/SVG)
 
 If you don't want to code your SVGs, that's totally understandle. JS can help you code the points....but it takes some math to get there. Another great option is to use an application that allows you to draw and export svg files like Adobe Illustrator or the free iOS-friendly Inkscape.
 
@@ -28,6 +28,10 @@ Fair warning: the second option comes with its own set of issues. These files of
 [Non-App Drawing of Bezier-curve smoothed lines](https://medium.com/@francoisromain/smooth-a-svg-path-with-cubic-bezier-curves-e37b49d46c74)
 
 [Transforming SVGs - read before trying to rotate!](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform)
+
+[Linear Gradients for SVGs on MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient)
+
+[Radial Gradients for SVGs on MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/radialGradient)
 
 # This Repo
 This repo contains a few more examples, including:
@@ -107,7 +111,7 @@ the whole svg a transform attribute and rotate that by tracking/changing in stat
 you will have to account for this by creating SVG groups that are translated to what you may think of as the center of the SVG canvas, and positioning everything accordingly around that point before rotating (see the compass and clock for examples of this).
 
 # Gradient Color Change
-Similar to the color change example above - except you use a template string of rgb to give the stroke or fill color, and change the corresponding r, g, and b in state.
+Similar to the color change example above - except you use a template string of rgb to give the stroke or fill color, and change the corresponding r, g, and b in state. If you are using a gradient (linear or radial) this opens up even more options for how you can animate the SVG. Changing the gradient offsets is one really neat way to do it!
 
 # Transforming paths
 Complex and requiring extra code and effort, see the snowflake example for more details!
